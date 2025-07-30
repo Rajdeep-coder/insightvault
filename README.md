@@ -2,7 +2,7 @@
 
 **AI-powered PDF Assistant – Summarize, Search, and Understand Documents Locally**
 
-![InsightVault Screenshot](./screenshot.png)
+![InsightVault Screenshot](./screenshots/home.png)
 
 ---
 
@@ -38,7 +38,7 @@ Built with:
 
 | Upload & Manage | Ask Questions | Summary |
 |------------------|------------------|----------|
-| ![](./screenshots/upload.png) | ![](./screenshots/chat.png) | ![](./screenshots/summary.png) |
+| ![](./screenshots/new_doc.png) | ![](./screenshots/chat.png) | ![](./screenshots/summary.png) |
 
 ---
 
@@ -47,7 +47,7 @@ Built with:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/insightvault.git
+git clone https://github.com/Rajdeep-coder/insightvault.git
 cd insightvault
 ````
 
@@ -69,15 +69,21 @@ rails db:setup
 Install [Ollama](https://ollama.com) and run a model:
 
 ```bash
-ollama run mistral
+ollama run llama3
 ```
 
-You can also use `llama2`, `gemma`, or your own fine-tuned model.
+You can also use `mistral`, `llama2`, `gemma`, or your own fine-tuned model.
 
 ### 5. Run the Rails Server
 
 ```bash
 bin/dev
+```
+
+### 6. Run the Sidekiq & Redis Server
+```bash
+sidekiq
+redis-server
 ```
 
 Visit `http://localhost:3000`
@@ -125,17 +131,4 @@ MIT License. See `LICENSE` file for details.
 ## 📬 Contact / Feedback
 
 Found a bug or have a feature request?
-Open an issue or connect via [LinkedIn](https://linkedin.com/in/your-profile)
-
-```
-
----
-
-Let me know if you want:
-- A `CONTRIBUTING.md`
-- CI (e.g. GitHub Actions)
-- Demo GIFs instead of screenshots  
-- Better badges at the top (build status, license, etc.)
-
-Happy to help make this repo shine!
-```
+Open an issue or connect via [LinkedIn](https://www.linkedin.com/in/rajdeep-singh-panwar-81221b203/)
