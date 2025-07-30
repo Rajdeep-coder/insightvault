@@ -1,0 +1,12 @@
+<!-- Messages area -->
+<h2 class="text-base font-semibold text-gray-600 mb-3">
+  💬 Chat about: <span class="text-gray-900"><%= document.title.truncate(50) %></span>
+</h2>
+<div id="document_<%= document.id %>_chat_box" class="space-y-4 flex-1 overflow-y-auto pr-2 scroll-smooth">
+  <%= render partial: "document_messages/document_message", collection: document.document_messages.order(:created_at), as: :message %>
+</div>
+
+<!-- Input form -->
+<div class="mt-4 border-t pt-4">
+  <%= render partial: "document_messages/form", locals: { document: document } %>
+</div>

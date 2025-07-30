@@ -1,0 +1,49 @@
+<div class="max-w-4xl mx-auto mt-10 px-4">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-gray-800">📄 Your Documents</h1>
+    <%= link_to "➕ Upload New", new_document_path, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+  </div>
+
+  <% if @documents.any? %>
+    <div class="bg-white shadow rounded overflow-hidden">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Title</th>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Status</th>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Messages</th>
+            <th class="px-4 py-2 text-right text-sm font-semibold text-gray-700">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% @documents.each do |doc| %>
+            <tr>
+              <td class="px-4 py-2 text-gray-800"><%= doc.title.presence || "Untitled Document" %></td>
+              <td class="px-4 py-2 text-sm">
+                <% if doc.summary.present? %>
+                  <span class="text-green-600 font-medium">✅ Summarized</span>
+                <% elsif doc.status == "processing" %>
+                  <span class="text-yellow-600 font-medium">🧠 Processing...</span>
+                <% else %>
+                  <span class="text-gray-500">❌ Not Summarized</span>
+                <% end %>
+              </td>
+              <td class="px-4 py-2 text-sm text-gray-600">
+                <%= doc.document_messages.count %> chats
+              </td>
+              <td class="px-4 py-2 text-right space-x-2">
+                <%= link_to "Open", document_path(doc), class: "text-blue-600 hover:underline font-medium" %>
+                <%= button_to "Delete", document_path(doc), method: :delete, data: { confirm: "Are you sure you want to delete this document?" }, class: "text-red-600 hover:underline font-medium bg-transparent p-0" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center text-gray-500 mt-20">
+      <p>No documents yet.</p>
+      <%= link_to "Upload your first document →", new_document_path, class: "text-blue-600 underline font-medium" %>
+    </div>
+  <% end %>
+</div>

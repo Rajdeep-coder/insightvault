@@ -1,0 +1,16 @@
+<nav class="bg-white shadow px-6 py-3 flex justify-between items-center">
+  <div>
+    <%= link_to root_path, class: "text-xl font-bold text-indigo-600 hover:opacity-80 transition" do %>
+      InsightVault
+    <% end %>
+  </div>
+  <div>
+    <% if helpers.user_signed_in? %>
+      <%= link_to "Dashboard", dashboard_path, class: "text-gray-700 px-4" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "text-gray-700 px-4" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "text-indigo-600 font-semibold" %>
+    <% end %>
+  </div>
+</nav>

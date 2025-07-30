@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "summary_frame_#{document.id}" do %>
+  <% if document.summary.present? %>
+    <h2 class="text-lg font-semibold mt-6 text-gray-700">AI Summary:</h2>
+    <div class="prose prose-sm bg-indigo-50 p-4 rounded text-gray-800">
+      <%= markdown(document.summary) %>
+    </div>
+
+  <% elsif document.status == "processing" %>
+    <div class="mt-6 text-gray-600 animate-pulse">
+      🧠 Generating summary, please wait...
+    </div>
+
+  <% else %>
+    <div class="mt-6">
+      <%= button_to "🧠 Generate AI Summary", summarize_document_path(document), method: :post,
+        data: { turbo_frame: "summary_frame_#{document.id}" },
+        class: "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-md transition duration-200 ease-in-out cursor-pointer shadow-sm hover:shadow-md" %>
+    </div>
+  <% end %>
+<% end %>
