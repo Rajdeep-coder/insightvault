@@ -6,7 +6,7 @@ class SummarizeDocumentJob < ApplicationJob
     document.update!(status: "processing")
 
     prompt = "Summarize this document:\n\n#{document.extracted_text.truncate(2000)}"
-    summary = IO.popen(["ollama", "run", "llama3", prompt]) { |io| io.read }
+    summary = IO.popen([ "ollama", "run", "llama3", prompt ]) { |io| io.read }
 
     document.update!(summary: summary, status: "done")
     Rails.logger.info "🔄 Updating summary + status"

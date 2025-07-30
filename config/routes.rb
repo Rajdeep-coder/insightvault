@@ -1,7 +1,7 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => "/sidekiq"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -21,11 +21,11 @@ Rails.application.routes.draw do
 
   authenticate :user do
     get "dashboard", to: "dashboard#index", as: :dashboard
-    resources :documents, only: [:index, :new, :create, :show, :destroy] do
+    resources :documents, only: [ :index, :new, :create, :show, :destroy ] do
       member do
         post :summarize
       end
-      resources :document_messages, only: [:create]
+      resources :document_messages, only: [ :create ]
     end
   end
 end

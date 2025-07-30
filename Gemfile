@@ -65,7 +65,7 @@ gem "sidekiq"
 gem "pagy" # for pagination
 gem "view_component" # clean UI components
 gem "annotate" # optional, helps document models
-gem 'pdf-reader'
-gem 'sidekiq'
+gem "pdf-reader"
+gem "sidekiq"
 gem "redis", "~> 4.0"
-gem 'redcarpet'
+gem "redcarpet"

@@ -30,7 +30,7 @@ class GenerateDocumentReplyJob < ApplicationJob
       #{user_content}
     PROMPT
 
-    reply = IO.popen(["ollama", "run", "llama3", prompt]) { |io| io.read }
+    reply = IO.popen([ "ollama", "run", "llama3", prompt ]) { |io| io.read }
 
     # Replace placeholder with actual reply
     typing_message.update!(
