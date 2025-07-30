@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+#flash-messages {
+    position: fixed;
+    top: 10%;         /* Vertically center the top edge of the container */
+    left: 50%;        /* Horizontally center the left edge of the container */
+    transform: translate(-50%, -50%); /* Move the container up by half its height and left by half its width */
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center individual messages horizontally within the container */
+    gap: 0.5rem;
+}
+
+.flash-message {
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.25rem; /* rounded */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+    font-size: 0.875rem; /* text-sm */
+    transition: opacity 0.5s ease-out; /* transition-opacity ease-out duration-500 */
+}
+
+/* Colors for specific messages (adjust as needed) */
+.flash-message.bg-green-100 {
+    background-color: #d1fae5; /* example green */
+    border: 1px solid #34d399; /* example green */
+    color: #065f46; /* example green */
+}
+
+.flash-message.bg-red-100 {
+    background-color: #fee2e2; /* example red */
+    border: 1px solid #f87171; /* example red */
+    color: #991b1b; /* example red */
+}

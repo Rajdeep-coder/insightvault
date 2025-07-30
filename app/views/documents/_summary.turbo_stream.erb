@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "summary_frame_#{document.id}" do %>
+  <%= render partial: "documents/summary", locals: { document: document } %>
+<% end %>

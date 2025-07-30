@@ -1,0 +1,7 @@
+<%= turbo_stream.append "document_#{@document.id}_chat_box" do %>
+  <%= render partial: "document_messages/document_message", locals: { message: @message } %>
+<% end %>
+
+<%= turbo_stream.update "new_message" do %>
+  <%= render partial: "document_messages/form", locals: { document: @document } %>
+<% end %>

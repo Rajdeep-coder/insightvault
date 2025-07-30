@@ -1,0 +1,23 @@
+<%= turbo_frame_tag "new_message" do %>
+  <%= form_with model: [document, DocumentMessage.new],
+                data: { turbo_frame: "new_message" },
+                id: "document-message-form" do |f| %>
+    <div class="mt-4 flex gap-2">
+      <%= f.text_field :content,
+                       placeholder: "Ask something...",
+                       class: "flex-1 border p-2 rounded",
+                       id: "message-input" %>
+      <%= f.submit "Ask", class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" %>
+    </div>
+  <% end %>
+<% end %>
+
+<script>
+  document.addEventListener("turbo:submit-end", function (event) {
+    const form = event.target;
+    if (form.id === "document-message-form") {
+      const input = document.getElementById("message-input");
+      if (input) input.value = "";
+    }
+  });
+</script>
