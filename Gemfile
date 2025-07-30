@@ -67,5 +67,5 @@ gem "view_component" # clean UI components
 gem "annotate" # optional, helps document models
 gem "pdf-reader"
 gem "sidekiq"
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.4"
 gem "redcarpet"
